@@ -1,47 +1,33 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Todos from "./components/Todos.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="main-container">
+    <header>
+      <h1 class="header">#todo</h1>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+      <Todos></Todos>
+    </main>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
+  .header {
+    font-weight: Bold;
+    font-size: 36px;
+    line-height: 42px;
+  }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
+  .main-container {
+    padding: 2rem 0;
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
