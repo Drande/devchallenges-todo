@@ -1,5 +1,5 @@
 <template>
-    <input v-on:change="(payload: any) => { $emit('changed', payload.target.value) }" :value="value">
+    <input v-on:input="(payload: any) => { $emit('changed', payload.target.value) }" :value="value">
 </template>
 
 <script lang="ts">
