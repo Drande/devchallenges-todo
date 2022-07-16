@@ -19,5 +19,14 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+    input {
+        width: 100%;
+        height: 54px;
+        border-radius: 12px;
+        border: 1px solid #BDBDBD;
+    }
+    input:focus-visible {
+        outline: none;
+        padding: 4px 8px;
+    }
 </style>

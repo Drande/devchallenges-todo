@@ -7,11 +7,11 @@
 
 <script lang="ts">
 import { TodoModel } from '@/models/Todo';
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
 export default defineComponent({
     emits: {
-        check(payload:any) {
+        check(payload: any) {
             return true;
         }
     },
@@ -19,9 +19,8 @@ export default defineComponent({
         todo: TodoModel,
         state: Boolean
     },
-    setup () {
-        
-        return {}
+    setup() {
+        return {};
     }
 })
 
