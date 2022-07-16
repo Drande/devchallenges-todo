@@ -4,9 +4,9 @@ export class TodoModel {
     task: String;
     completed: Boolean;
     id: string;
-    constructor(taskName: string) {
+    constructor(taskName: string, state?: boolean) {
         this.task = taskName;
-        this.completed = false;
+        this.completed = state??false;
         this.id = v4();
     }
 };

@@ -39,7 +39,10 @@ export default defineComponent({
         gap: 7rem;
         padding: 0 5rem;
         border-bottom: 1px solid #BDBDBD;
+        overflow: hidden;
+        width: min-content;
     }
+
     span {
         cursor: pointer;
         width: 6rem;
@@ -49,6 +52,7 @@ export default defineComponent({
         position: relative;
         height: 32px;
     }
+    
     span.active::after, span:hover::after {
         content: "";
         height: 4px;
@@ -59,5 +63,16 @@ export default defineComponent({
         border-top-right-radius: 4px;
         top: calc(100% - 3px);
         left: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+        .tabs-container {
+            gap: 0.5rem;
+            padding: 0 0.5rem;
+        }
+        
+        span {
+            width: 5rem;
+        }
     }
 </style>

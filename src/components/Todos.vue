@@ -1,17 +1,17 @@
 <template>
-    <div class="column g-1rem">
+    <div class="column g-1rem align-items-center">
         <Tab :tabs="['All', 'Active', 'Completed']" v-on:change="onTabChange"></Tab>
-        <div class="row g-1rem" v-if="activeIndex!==2">
+        <div class="add-controls-container" v-if="activeIndex!==2">
             <Input v-on:changed="(value) => { inputState = value; }" :value="inputState"></Input>
             <Button class="add" :label="'Add'" v-on:clicked="() => { addTodo() }"></Button>
         </div>
-        <div class="column g-1rem" v-if="activeIndex===0">
+        <div class="todo-list" v-if="activeIndex===0">
             <Todo v-for="todo in todos" v-on:check="($event) => { updateTodo(todo, $event.target.checked) }" :todo="todo"></Todo>
         </div>
-        <div class="column g-1rem" v-if="activeIndex===1">
+        <div class="todo-list" v-if="activeIndex===1">
             <Todo v-for="todo in activeTodos" v-on:check="($event) => { updateTodo(todo, $event.target.checked) }" :todo="todo"></Todo>
         </div>
-        <div class="column g-1rem" v-if="activeIndex===2">
+        <div class="todo-list" v-if="activeIndex===2">
             <div class="row justify-content-between align--items-center" v-for="todo in completedTodos">
                 <Todo v-on:check="($event) => { updateTodo(todo, $event.target.checked) }" :todo="todo"></Todo>
                 <span v-on:click="() => { deleteTodo(todo.id); }" class="material-icons cursor-pointer">delete</span>
@@ -33,13 +33,19 @@ export default defineComponent({
     setup() {
         return {};
     },
-    data(){
+    data() {
+        const savedTodos = localStorage.getItem("todos");
+        let todos = [];
+        if(savedTodos) {
+            todos = JSON.parse(savedTodos);
+        }
+        todos = todos.map((t:any) => new TodoModel(t.task, t.completed));
         return {
             inputState: "",
             activeIndex: 0,
-            todos: <any>[],
-            completedTodos: <any>[],
-            activeTodos: <any>[]
+            todos: todos,
+            completedTodos: todos.filter((t:any) => t.completed),
+            activeTodos: todos.filter((t:any) => !t.completed),
         }
     },
     methods: {
@@ -62,6 +68,7 @@ export default defineComponent({
         updateTodosSublists() {
             this.completedTodos = this.todos.filter((t:TodoModel) => t.completed);
             this.activeTodos = this.todos.filter((t:TodoModel) => !t.completed);
+            localStorage.setItem('todos', JSON.stringify(this.todos));
         },
         addTodo() {
             if(this.inputState) {
@@ -77,5 +84,23 @@ export default defineComponent({
 </script>
 
 <style scoped>
+    .add-controls-container {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        width: 100%;
+    }
+    @media screen and (max-width: 768px) {
+      .add-controls-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
 
+    .todo-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 80vw;
+    }
 </style>

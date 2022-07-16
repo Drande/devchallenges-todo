@@ -30,7 +30,7 @@ export default defineComponent({
     .todo-row {
         display: flex;
         gap: 0.5rem;
-        align-items: center;
+        min-width: 0;
     }
 
     .completed {
@@ -38,13 +38,17 @@ export default defineComponent({
     }
 
     input {
-        width: 24px;
-        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
     }
 
     span {
         font-weight:400;
         font-size: 18px;
         line-height: 22px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: break-all;
     }
 </style>
