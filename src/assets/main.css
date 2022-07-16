@@ -10,6 +10,22 @@
   flex-direction: row;
 }
 
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-self-end {
+  align-self: flex-end;
+}
+
 .g-1rem {
   gap:1rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
