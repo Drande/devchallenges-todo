@@ -1,5 +1,9 @@
 @import "./base.css";
 
+#app {
+  height: 100vh;
+}
+
 .column {
   display: flex;
   flex-direction: column;
@@ -28,4 +32,17 @@
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+
+.credits {
+  color: #A9A9A9;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  padding: 1rem;
 }

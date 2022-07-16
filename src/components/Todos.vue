@@ -1,5 +1,5 @@
 <template>
-    <div class="column g-1rem align-items-center">
+    <div class="column g-1rem">
         <Tab :tabs="['All', 'Active', 'Completed']" v-on:change="onTabChange"></Tab>
         <div class="add-controls-container" v-if="activeIndex!==2">
             <Input v-on:changed="(value) => { inputState = value; }" :value="inputState"></Input>

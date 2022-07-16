@@ -7,11 +7,11 @@ import Todos from "./components/Todos.vue";
     <header>
       <h1 class="header">#todo</h1>
     </header>
-
     <main>
       <Todos></Todos>
     </main>
   </div>
+  <footer class='footer'><span class="credits">created by <b><u>Drande</u></b> - devChallenges.io</span></footer>
 </template>
 
 <style scoped>
@@ -22,11 +22,12 @@ import Todos from "./components/Todos.vue";
   }
 
   .main-container {
-    padding: 2rem 0;
+    overflow: auto;
+    padding: 2rem 0 0 0;
     display: flex;
     flex-direction: column;
     width: 100%;
-    justify-content: center;
+    height: calc(100% - 80px);
     align-items: center;
     gap: 1rem;
   }
